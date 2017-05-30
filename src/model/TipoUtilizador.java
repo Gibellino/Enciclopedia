@@ -1,10 +1,10 @@
 package model;
 
-public class TipoUser {
+public class TipoUtilizador {
 
 	private String tipoUser;
 
-	public TipoUser(String tipoUser) {
+	public TipoUtilizador(String tipoUser) {
 		this.tipoUser = tipoUser;
 	}
 
@@ -15,5 +15,5 @@ public class TipoUser {
 	public void setTipoUser(String tipoUser) {
 		this.tipoUser = tipoUser;
 	}
-	
+
 }

@@ -1,14 +1,14 @@
 package model;
 
-public class User {
+public class Utilizador {
 
 	private String nome;
 	private String mail;
 	private String password;
-	private TipoUser tipoUser;
+	private TipoUtilizador tipoUser;
 	private String dataNasc;
-	
-	public User(String nome, String mail, String password, TipoUser tipoUser, String dataNasc) {
+
+	public Utilizador(String nome, String mail, String password, TipoUtilizador tipoUser, String dataNasc) {
 		super();
 		this.nome = nome;
 		this.mail = mail;
@@ -41,11 +41,11 @@ public class User {
 		this.password = password;
 	}
 
-	public TipoUser getTipoUser() {
+	public TipoUtilizador getTipoUser() {
 		return tipoUser;
 	}
 
-	public void setTipoUser(TipoUser tipoUser) {
+	public void setTipoUser(TipoUtilizador tipoUser) {
 		this.tipoUser = tipoUser;
 	}
 
@@ -56,5 +56,5 @@ public class User {
 	public void setDataNasc(String dataNasc) {
 		this.dataNasc = dataNasc;
 	}
-	
+
 }

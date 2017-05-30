@@ -4,10 +4,10 @@ public class Tema {
 
 	private String nomeTema;
 	private String descricao;
-	private int prec; //Precedência
+	private Tema prec;
 	private int restricao;
-	
-	public Tema(String nomeTema, String descricao, int prec, int restricao) {
+
+	public Tema(String nomeTema, String descricao, Tema prec, int restricao) {
 		this.nomeTema = nomeTema;
 		this.descricao = descricao;
 		this.prec = prec;
@@ -30,11 +30,11 @@ public class Tema {
 		this.descricao = descricao;
 	}
 
-	public int getPrec() {
+	public Tema getPrec() {
 		return prec;
 	}
 
-	public void setPrec(int prec) {
+	public void setPrec(Tema prec) {
 		this.prec = prec;
 	}
 
@@ -45,5 +45,5 @@ public class Tema {
 	public void setRestricao(int restricao) {
 		this.restricao = restricao;
 	}
-	
+
 }
