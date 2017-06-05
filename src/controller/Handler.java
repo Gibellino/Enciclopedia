@@ -7,35 +7,50 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import services.Logica;
+
 /**
- * Servlet implementation class HandlerTemas
+ * Servlet implementation class HandlerIndex
  */
-@WebServlet("/HandlerTemas")
-public class HandlerTemas extends HttpServlet {
+@WebServlet("/HandlerIndex")
+public class Handler extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HandlerTemas() {
-        super();
-        // TODO Auto-generated constructor stub
+    public Handler() {
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		
+		request.getRequestDispatcher("/index.jsp").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+
+		String parametro = request.getParameter("logica"); //Recebe como parametro do jsp, qual a class do service que irá atuar
+	    String nomeDaClasse = "service." + parametro; //Nome da Classe
+
+	    try {
+	      Class<?> classe = Class.forName(nomeDaClasse);
+	      Logica logica = (Logica) classe.newInstance();
+	      
+	      String pagina = logica.executa(request, response);
+	      
+	      request.getRequestDispatcher(pagina).forward(request, response);
+
+	    } catch (Exception e) {
+	      throw new ServletException(
+	          "A lógica causou uma exceção", e);
+	    }
+		
 	}
 
 }

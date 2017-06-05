@@ -2,9 +2,12 @@ package services;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import model.Tema;
 
-public class sTemas {
+public class sTemas implements Logica{
 
 	private ArrayList<Tema> tema;
 
@@ -18,6 +21,17 @@ public class sTemas {
 
 	public void setTema(ArrayList<Tema> tema) {
 		this.tema = tema;
+	}
+
+	public void addTema(){
+		
+	}
+	
+	@Override
+	public String executa(HttpServletRequest req, HttpServletResponse res) throws Exception {
+
+		
+		return "/index.jsp";
 	}
 
 }
