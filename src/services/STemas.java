@@ -7,11 +7,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.Tema;
 
-public class sTemas implements Logica{
+public class STemas implements Logica{
 
 	private ArrayList<Tema> tema;
 
-	public sTemas(ArrayList<Tema> tema) {
+	public STemas(ArrayList<Tema> tema) {
 		tema = new ArrayList<>();
 	}
 
@@ -24,7 +24,7 @@ public class sTemas implements Logica{
 	}
 
 	public void addTema(){
-		
+		System.out.print("Adicionar Tema");
 	}
 	
 	@Override
