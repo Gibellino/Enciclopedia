@@ -4,12 +4,14 @@ public class Tema {
 
 	private String nomeTema;
 	private String descricao;
+	private String conteudo;
 	private Tema prec;
 	private int restricao;
 
-	public Tema(String nomeTema, String descricao, Tema prec, int restricao) {
+	public Tema(String nomeTema, String descricao, String conteudo, Tema prec, int restricao) {
 		this.nomeTema = nomeTema;
 		this.descricao = descricao;
+		this.conteudo = conteudo;
 		this.prec = prec;
 		this.restricao = restricao;
 	}
