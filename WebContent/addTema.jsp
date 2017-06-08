@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <div class="container">
 	<div class="row">
     	<div class="col-lg-12">
@@ -19,6 +20,15 @@
 					<label>Precedência de tema:</label>
 					<select class="form-control" name="prec">
 						<option value="">Sem precedência</option>
+						<%
+						
+							ArrayList temas = (ArrayList) request.getAttribute("arrayTemas");
+						
+							for(int i=0; i<temas.size(); i++){
+								
+							}
+						
+						%>
 					</select>
 				</div>
 				<div class="form-group">
