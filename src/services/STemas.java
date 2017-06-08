@@ -1,47 +1,33 @@
 package services;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Tema;
 
-public class STemas implements Logica{
+public class STemas implements Logica {
 
-	private ArrayList<Tema> tema;
-
-	public STemas(ArrayList<Tema> tema) {
-		this.tema = new ArrayList<>();
+	public void addTema(String titulo,String intro, String cont, Tema tema,int priv) {
+		Logica.temas.add(new Tema(titulo,intro, cont, tema, priv));
+		System.out.println("INserido: " + Logica.temas.get(Logica.temas.size()-1).toString());
 	}
 
-	public ArrayList<Tema> getTema() {
-		return tema;
-	}
-
-	public void setTema(ArrayList<Tema> tema) {
-		this.tema = tema;
-	}
-
-	public void addTema(){
-		System.out.print("Adicionar Tema");
-	}
-	
 	@Override
 	public String executa(HttpServletRequest req, HttpServletResponse res) throws Exception {
-
-		Tema tema = null;
-		
-		if(req.getParameter("acao").equals("addTema")){
-			Logica.temas.add(new Tema(req.getParameter("titulo"), req.getParameter("intro"),
-					req.getParameter("cont"), tema, Integer.parseInt(req.getParameter("rest"))));
-		}else if(req.getParameter("acao").equals("editTema")){
-			
-		}else if(req.getParameter("acao").equals("elimTema")){
-			
+		if (req.getParameter("acao").equals("addTema")) {
+			Tema tema;
+			if (req.getParameter("prec") == "") {
+				tema = null;
+			} else {
+				tema = Logica.temas.get(Integer.parseInt(req.getParameter("prec")));
+			}
+			addTema(req.getParameter("titulo"), req.getParameter("intro"), req.getParameter("cont"), tema,
+					Integer.parseInt(req.getParameter("rest")));
 		}
 		
+		req.setAttribute("arrayTemas", Logica.temas);
 		
-		return "/index.jsp";
+		return "/index.jsp?pag=temas";
 	}
+
 }

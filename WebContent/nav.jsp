@@ -9,8 +9,8 @@
 		<div class="collapse navbar-collapse navbar-right">
 			<ul class="nav navbar-nav">
 				<li id="home" class="active"><a href="index.jsp">Home</a></li>
-				<li id="tema"><a href="index.jsp?pag=temas">Temas</a></li>
-				<li id="user"><a href="index.jsp?pag=users">User</a></li>
+				<li id="tema"><a href="Handler?pag=temas">Temas</a></li>
+				<li id="user"><a href="Handler?pag=users">User</a></li>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
@@ -21,8 +21,11 @@
 <script>
 	$(document).ready(function() {
 		var pag = <% request.getParameter("pag"); %>
-		if(pag == ""){
-			//$("#home").class("");
+		if(pag == "" || pag == null){
+			$("#home").attr("class","active");
+		}else if(pag == "temas"){
+			$("#home").attr("class","");
+			$("#tema").attr("class","active");
 		}
 	});
 </script>

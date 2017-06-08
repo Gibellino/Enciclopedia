@@ -15,12 +15,12 @@
 	<%
 		if (request.getParameter("pag") != null) {
 			if (request.getParameter("pag").equals("temas")) {
-				%> <jsp:include page="temas.jsp" /> <%
+				%> <jsp:include page="/temas.jsp" /> <%
 			} else if (request.getParameter("pag").equals("users")) {
-				%>	<jsp:include page="user.jsp" /> <%
+				%>	<jsp:include page="/user.jsp" /> <%
 			}
 		}else{
-			%> <jsp:include page="home.jsp" /> <%
+			%> <jsp:include page="/home.jsp" /> <%
 		}
 	%>
 </body>

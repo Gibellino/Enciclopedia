@@ -27,6 +27,8 @@ public class Handler extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		request.setAttribute("arrayTemas", Logica.temas);
+		
 		request.getRequestDispatcher("/index.jsp").forward(request, response);
 	}
 
@@ -36,14 +38,13 @@ public class Handler extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String parametro = request.getParameter("logica"); //Recebe como parametro do jsp, qual a class do service que irá atuar
-	    String nomeDaClasse = "service." + parametro; //Nome da Classe
-
+	    String nomeDaClasse = "services." + parametro; //Nome da Classe
+	    
 	    try {
 	      Class<?> classe = Class.forName(nomeDaClasse);
 	      Logica logica = (Logica) classe.newInstance();
 	      
 	      String pagina = logica.executa(request, response);
-	      
 	      request.getRequestDispatcher(pagina).forward(request, response);
 
 	    } catch (Exception e) {
