@@ -58,11 +58,6 @@
 					</div>
 					<div class="text-right">
 						<div class="form-group">
-							<%
-								//request.setAttribute("logica", "STemas");
-								//request.setAttribute("acao", "addTema");
-							%>
-
 							<input type="hidden" name="logica" value="STemas"> <input
 								type="hidden" name="acao" value="addTema"> <input
 								class="btn btn-danger" type="button" value="Cancelar"
@@ -78,10 +73,17 @@
 
 <script>
 	function edit(field) {
-		
-		<% Tema tema = (Tema) temas.get(0); %>
-		
-		$("#form2").css("display", "block");
-		$("#editTitulo").attr("value",'"' + <% out.append(tema.getNomeTema()); %> + '"');
+		<%if (request.getParameter("id") == null) {
+			%>window.location = window.location.href + "&id=" + field.value;<%
+		}else{
+			
+		}
+		%>
+	}
+
+	function ola() {
+		<% Tema tema = (Tema) temas.get(0);%>
+			$("#form2").css("display", "block");
+		<%out.append("$('#editTitulo').attr('value', '" + tema.getNomeTema() + "');");%>
 	}
 </script>
