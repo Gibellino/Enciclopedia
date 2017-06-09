@@ -1,4 +1,5 @@
 <%@page import="java.util.ArrayList"%>
+<%@page import="model.Tema" %>
 <div class="container">
 	<div class="row">
     	<div class="col-lg-12">
@@ -25,7 +26,8 @@
 							ArrayList temas = (ArrayList) request.getAttribute("arrayTemas");
 						
 							for(int i=0; i<temas.size(); i++){
-								
+								Tema tema = (Tema) temas.get(i);
+								out.append("<option value='" + i + "'>" + tema.getNomeTema() + "</option>");
 							}
 						
 						%>

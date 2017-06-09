@@ -4,11 +4,11 @@
 	<ul class="nav nav-pills">
 		<li role="presentation" class="active"><a
 			href="index.jsp?pag=temas">Temas</a></li>
-		<li role="presentation"><a href="index.jsp?pag=temas&f=add">Adicionar
+		<li role="presentation"><a href="Handler?pag=temas&f=add">Adicionar
 				Temas</a></li>
-		<li role="presentation"><a href="index.jsp?pag=temas&f=edit">Editar
+		<li role="presentation"><a href="Handler?pag=temas&f=edit">Editar
 				Temas</a></li>
-		<li role="presentation"><a href="index.jsp?pag=temas&f=elim">Eliminar
+		<li role="presentation"><a href="Handler?pag=temas&f=elim">Eliminar
 				Temas</a></li>
 	</ul>
 	<div class="row">
@@ -44,16 +44,16 @@
 				<%
 					ArrayList temas = (ArrayList) request.getAttribute("arrayTemas");
 
-						for(int i=0;i<temas.size();i++){
+						for (int i = 0; i < temas.size(); i++) {
 							Tema tema = (Tema) temas.get(i);
 							out.append("<tr><td>" + tema.getNomeTema() + "</td>");
-							
-							if(tema.getPrec() == null){
+
+							if (tema.getPrec() == null) {
 								out.append("<td>Sem precedência</td>");
-							}else{
+							} else {
 								out.append("<td>" + tema.getPrec() + "</td>");
 							}
-							
+
 							out.append("<td>" + tema.getRestricao() + "</td></tr>");
 						}
 				%>
