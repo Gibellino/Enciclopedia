@@ -3,7 +3,7 @@
 <div class="container-fluid">
 	<ul class="nav nav-pills">
 		<li role="presentation" class="active"><a
-			href="index.jsp?pag=temas">Temas</a></li>
+			href="Handler?pag=temas">Temas</a></li>
 		<li role="presentation"><a href="Handler?pag=temas&f=add">Adicionar
 				Temas</a></li>
 		<li role="presentation"><a href="Handler?pag=temas&f=edit">Editar
@@ -31,7 +31,7 @@
 	<jsp:include page="elimTema.jsp" />
 	<%
 		}
-		} else {
+		}else{
 	%>
 	<div class="row">
 		<div class="col-md-12">
@@ -51,7 +51,7 @@
 							if (tema.getPrec() == null) {
 								out.append("<td>Sem precedência</td>");
 							} else {
-								out.append("<td>" + tema.getPrec() + "</td>");
+								out.append("<td>" + tema.getPrec().getNomeTema() + "</td>");
 							}
 
 							out.append("<td>" + tema.getRestricao() + "</td></tr>");

@@ -17,15 +17,3 @@
 	</div>
 	<!-- /.container -->
 </nav>
-
-<script>
-	$(document).ready(function() {
-		var pag = <% request.getParameter("pag"); %>
-		if(pag == "" || pag == null){
-			$("#home").attr("class","active");
-		}else if(pag == "temas"){
-			$("#home").attr("class","");
-			$("#tema").attr("class","active");
-		}
-	});
-</script>
