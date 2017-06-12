@@ -11,7 +11,7 @@
 			<form method="post" action="Handler">
 				<div class="form-group">
 					<label>Titulo:</label> <input type="text" class="form-control"
-						name="titulo" placeholder="Titulo do tema">
+						name="titulo" placeholder="Titulo do tema" autofocus>
 				</div>
 				<div class="form-group">
 					<label>Restrição de idade (maiores que):</label>

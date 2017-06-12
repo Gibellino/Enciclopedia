@@ -31,32 +31,36 @@
 	<jsp:include page="elimTema.jsp" />
 	<%
 		}
-		}else{
+		} else {
 	%>
 	<div class="row">
 		<div class="col-md-12">
-			<table class="table table-bordered">
-				<tr>
-					<th>Titulo</th>
-					<th>Precedência</th>
-					<th>Restrição (Idade)</th>
-				</tr>
-				<%
-					ArrayList temas = (ArrayList) request.getAttribute("arrayTemas");
+			<table class="table table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>Titulo</th>
+						<th>Precedência</th>
+						<th>Restrição (Idade)</th>
+					</tr>
+				</thead>
+				<tbody>
+					<%
+						ArrayList temas = (ArrayList) request.getAttribute("arrayTemas");
 
-						for (int i = 0; i < temas.size(); i++) {
-							Tema tema = (Tema) temas.get(i);
-							out.append("<tr><td>" + tema.getNomeTema() + "</td>");
+							for (int i = 0; i < temas.size(); i++) {
+								Tema tema = (Tema) temas.get(i);
+								out.append("<tr onclick='ola(" + i + ")'><td>" + tema.getNomeTema() + "</td>");
 
-							if (tema.getPrec() == null) {
-								out.append("<td>Sem precedência</td>");
-							} else {
-								out.append("<td>" + tema.getPrec().getNomeTema() + "</td>");
+								if (tema.getPrec() == null) {
+									out.append("<td>Sem precedência</td>");
+								} else {
+									out.append("<td>" + tema.getPrec().getNomeTema() + "</td>");
+								}
+
+								out.append("<td>" + tema.getRestricao() + "</td></tr>");
 							}
-
-							out.append("<td>" + tema.getRestricao() + "</td></tr>");
-						}
-				%>
+					%>
+				</tbody>
 			</table>
 		</div>
 	</div>
@@ -64,3 +68,12 @@
 		}
 	%>
 </div>
+
+<script>
+
+	<%--function ola(field){
+		
+		window.location = "Handler?pag=users&id=" + field;
+	}--%>
+
+</script>

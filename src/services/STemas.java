@@ -12,11 +12,30 @@ public class STemas implements Logica {
 	}
 
 	public void editTema(int tema, String titulo, String intro, String cont, Tema temaPre, int priv) {
+
 		Logica.temas.get(tema).setNomeTema(titulo);
 		Logica.temas.get(tema).setDescricao(intro);
 		Logica.temas.get(tema).setConteudo(cont);
 		Logica.temas.get(tema).setPrec(temaPre);
 		Logica.temas.get(tema).setRestricao(priv);
+	}
+
+	public void elimTema(int idTema) {
+
+		Logica.temas.remove(idTema);
+
+		Tema tema = Logica.temas.get(idTema);
+
+		for (int i = 0; i < Logica.temas.size(); i++) {
+			if (Logica.temas.get(i).getPrec() == tema) {
+				Logica.temas.remove(i);
+				for (int j = 0; j < Logica.temas.size(); j++) {
+					if (Logica.temas.get(j).getPrec() == Logica.temas.get(i)) {
+						Logica.temas.remove(j);
+					}
+				}
+			}
+		}
 	}
 
 	@Override
@@ -35,21 +54,14 @@ public class STemas implements Logica {
 			if (req.getParameter("editPrec").equals("sem")) {
 				tema = null;
 			} else {
-				System.out.println("ola2");
 				tema = Logica.temas.get(Integer.parseInt(req.getParameter("editPrec")));
 			}
-			
-			System.out.println("TEMA: " + req.getParameter("listaTemas"));
-			System.out.println("TITULO: " + req.getParameter("editTitulo"));
-			System.out.println("CONTEUDO: " + req.getParameter("editCont"));
-			System.out.println("INTRO: " + req.getParameter("editIntro"));
-			System.out.println("RESTRICAO: " + req.getParameter("editRest"));
-			
-			editTema(Integer.parseInt(req.getParameter("listaTemas")),
-					req.getParameter("editTitulo"),
-					req.getParameter("editIntro"),
-					req.getParameter("editCont"), tema,
+
+			editTema(Integer.parseInt(req.getParameter("listaTemas")), req.getParameter("editTitulo"),
+					req.getParameter("editIntro"), req.getParameter("editCont"), tema,
 					Integer.parseInt(req.getParameter("editRest")));
+		} else if (req.getParameter("acao").equals("elimTema")) {
+			elimTema(Integer.parseInt(req.getParameter("listaTemas")));
 		}
 
 		req.setAttribute("arrayTemas", Logica.temas);
