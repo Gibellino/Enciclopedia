@@ -43,12 +43,7 @@
 					<textarea placeholder="Conteúdo do tema" name="cont"
 						class="form-control" rows="20" style="resize: vertical;"></textarea>
 				</div>
-				<div class="form-group">
-					<%
-						//request.setAttribute("logica", "STemas");
-						//request.setAttribute("acao", "addTema");
-					%>
-	
+				<div class="form-group">	
 					<input type="hidden" name="logica" value="STemas"> <input
 						type="hidden" name="acao" value="addTema"> <input
 						class="btn btn-success" type="submit" value="Inserir"
