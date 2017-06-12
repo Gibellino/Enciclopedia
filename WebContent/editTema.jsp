@@ -120,7 +120,7 @@
 				
 				out.append("$('#editIntro').html('" + intro + "');");
 
-				StringBuilder cont= new StringBuilder(tema.getDescricao());
+				StringBuilder cont= new StringBuilder(tema.getConteudo());
 
 				for(int i=0; i< cont.length(); i++){
 					if(cont.charAt(i) == 13 && cont.charAt(i+1) == 10){
@@ -133,5 +133,3 @@
 			}%>
 	});
 </script>
-
-<%--  --%>

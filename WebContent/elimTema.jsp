@@ -29,6 +29,29 @@
 							type="hidden" name="acao" value="elimTema">
 						<button type="button" class="btn btn-danger" data-toggle="modal"
 							id="confElim" data-target="#confirm">Eliminar</button>
+						<button type="button" class="btn btn-danger" data-toggle="modal"
+							id="confElim" data-target="#confirm">Eliminar</button>
+					</div>
+				</div>
+
+				<div class="modal fade" id="confirm" role="dialog">
+					<div class="modal-dialog">
+						<!-- Modal content-->
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">Confirmação</h4>
+							</div>
+							<div class="modal-body">
+								<p>Tem a certeza que deseja eliminar?</p>
+							</div>
+							<div class="modal-footer">
+								<input class="btn btn-danger" type="submit" value="Eliminar"
+									name="eliminar">
+								<button type="button" class="btn btn-default"
+									data-dismiss="modal">Cancelar</button>
+							</div>
+						</div>
 					</div>
 				</div>
 
@@ -53,13 +76,28 @@
 						</div>
 					</div>
 				</div>
-
 			</form>
 		</div>
 	</div>
 </div>
 
 <script>
+
+$( document ).ready(function() {
+	if($("#listaTemas").val() == "sem"){
+		$("#confElim").attr("disabled","true");
+	}else{
+		$("#confElim").removeAttr("disabled","false");
+	}
+});
+
+function verif(field){
+	if($("#listaTemas").val() == "sem"){
+		$("#confElim").attr("disabled","true");
+	}else{
+		$("#confElim").removeAttr("disabled","false");
+	}
+}
 	$(document).ready(
 			function() {
 				if ($("#listaTemas").val() == "sem") {

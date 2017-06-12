@@ -21,7 +21,7 @@ public class STemas implements Logica {
 	}
 
 	public void elimTema(int idTema) {
-
+				
 		Tema tema = Logica.temas.get(idTema);
 
 		for (int i = 0; i < Logica.temas.size(); i++) {
@@ -31,7 +31,6 @@ public class STemas implements Logica {
 		System.out.println("");
 				
 		for (int i = 0; i < Logica.temas.size(); i++) {
-			System.out.println("Tema: " + Logica.temas.get(i).getNomeTema());
 			if (Logica.temas.get(i) == tema) {
 				for (int j = 0; j < Logica.temas.size(); j++) {
 					System.out.println("Subtema: " + Logica.temas.get(j).getNomeTema());
@@ -42,7 +41,6 @@ public class STemas implements Logica {
 				Logica.temas.remove(i);
 			}
 		}
-
 	}
 
 	@Override

@@ -26,9 +26,13 @@
 	%>
 	<jsp:include page="editTema.jsp" />
 	<%
-		} else {
+		} else if (request.getParameter("f").equals("elim")) {
 	%>
 	<jsp:include page="elimTema.jsp" />
+	<%
+		} else if (request.getParameter("f").equals("view")) {
+	%>
+	<jsp:include page="viewTema.jsp" />
 	<%
 		}
 		} else {
@@ -49,7 +53,7 @@
 
 							for (int i = 0; i < temas.size(); i++) {
 								Tema tema = (Tema) temas.get(i);
-								out.append("<tr onclick='ola(" + i + ")'><td>" + tema.getNomeTema() + "</td>");
+								out.append("<tr onclick='view(" + i + ")'><td>" + tema.getNomeTema() + "</td>");
 
 								if (tema.getPrec() == null) {
 									out.append("<td>Sem precedência</td>");
@@ -70,10 +74,8 @@
 </div>
 
 <script>
+	function view(field) {
 
-	<%--function ola(field){
-		
-		window.location = "Handler?pag=users&id=" + field;
-	}--%>
-
+		window.location = "Handler?pag=temas&f=view&t=" + field;
+	}
 </script>
