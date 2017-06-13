@@ -22,20 +22,27 @@ public class STemas implements Logica {
 
 	public void elimTema(int idTema) {
 
-		Logica.temas.remove(idTema);
-
 		Tema tema = Logica.temas.get(idTema);
 
 		for (int i = 0; i < Logica.temas.size(); i++) {
-			if (Logica.temas.get(i).getPrec() == tema) {
-				Logica.temas.remove(i);
+			System.out.println("Tema: " + Logica.temas.get(i).getNomeTema());
+		}
+		
+		System.out.println("");
+				
+		for (int i = 0; i < Logica.temas.size(); i++) {
+			System.out.println("Tema: " + Logica.temas.get(i).getNomeTema());
+			if (Logica.temas.get(i) == tema) {
 				for (int j = 0; j < Logica.temas.size(); j++) {
-					if (Logica.temas.get(j).getPrec() == Logica.temas.get(i)) {
+					System.out.println("Subtema: " + Logica.temas.get(j).getNomeTema());
+					if (Logica.temas.get(j).getPrec() == tema) {
 						Logica.temas.remove(j);
 					}
 				}
+				Logica.temas.remove(i);
 			}
 		}
+
 	}
 
 	@Override

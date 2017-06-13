@@ -109,9 +109,27 @@
 					out.append("document.getElementById('editPrec').value = 'sem';");
 				}
 
-				out.append("$('#editIntro').html('" + tema.getDescricao() + "');");
+				StringBuilder intro = new StringBuilder(tema.getDescricao());
 
-				out.append("$('#editCont').html('" + tema.getConteudo() + "');");
+				for(int i=0; i< intro.length(); i++){
+					if(intro.charAt(i) == 13 && intro.charAt(i+1) == 10){
+						intro.setCharAt(i, '\\');
+						intro.setCharAt((i+1), 'n');
+					}
+				}
+				
+				out.append("$('#editIntro').html('" + intro + "');");
+
+				StringBuilder cont= new StringBuilder(tema.getDescricao());
+
+				for(int i=0; i< cont.length(); i++){
+					if(cont.charAt(i) == 13 && cont.charAt(i+1) == 10){
+						cont.setCharAt(i, '\\');
+						cont.setCharAt((i+1), 'n');
+					}
+				}
+				
+				out.append("$('#editCont').html('" + cont + "');");
 			}%>
 	});
 </script>
